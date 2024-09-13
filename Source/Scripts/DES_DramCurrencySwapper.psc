@@ -4,8 +4,6 @@ Actor Property PlayerREF Auto
 Form Property DES_Dram Auto 
 Perk Property DES_MorrowindPriceAdjustmentPerk auto
 
-GlobalVariable Property CWSons auto
-GlobalVariable Property CWImperial auto
 Location Property DLC2RavenRockLocation auto
 Location Property DLC2TelMithrynLocation auto
 
