@@ -18,7 +18,9 @@ EVENT OnLocationChange(Location akOldLoc, Location akNewLoc)
 		IF (PlayerREF.HasPerk(DES_MorrowindPriceAdjustmentPerk))
 			PlayerREF.RemovePerk(DES_MorrowindPriceAdjustmentPerk)
 		ENDIF
-		PlayerREF.AddPerk(DES_MorrowindPriceAdjustmentPerk)
+		IF !PlayerRef.IsInLocation(DLC2TelMithrynLocation)
+			PlayerREF.AddPerk(DES_MorrowindPriceAdjustmentPerk)
+		ENDIF
 		;debug.notification("LastCurrency is " + LastCurrency.GetName())
 		ShouldRevertCurrency = False
 		IF (!LastCurrency)
