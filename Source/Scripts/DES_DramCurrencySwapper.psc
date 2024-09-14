@@ -25,7 +25,7 @@ EVENT OnLocationChange(Location akOldLoc, Location akNewLoc)
 			ShouldRevertCurrency = True
 		ENDIF
 		SetCurrency(DES_Dram)
-	ELSEIF !PlayerRef.IsInLocation(DLC2RavenRockLocation) && !PlayerRef.IsInLoation(DLC2TelMithrynLocation)
+	ELSEIF !PlayerRef.IsInLocation(DLC2RavenRockLocation) && !PlayerRef.IsInLocation(DLC2TelMithrynLocation)
 	;debug.messagebox("We are not in Morrowind.")
 		IF (ShouldRevertCurrency)
 			ResetCurrency()
