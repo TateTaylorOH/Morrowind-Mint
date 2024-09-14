@@ -6,7 +6,12 @@ Scriptname TIF__ExchangeUlfricsForDrams Extends TopicInfo Hidden
 Function Fragment_0(ObjectReference akSpeakerRef)
 Actor akSpeaker = akSpeakerRef as Actor
 ;BEGIN CODE
-Exchange.UlfricsForDrams(DES_Ulfric, count)
+Exchange.ForDrams(DES_Ulfric, count)
+
+;Since Solstheim vendors won't trade in 
+;ulfrics until after the Stormcloaks win the 
+;Civil War, this mod assumes the coin's 
+;worth is always 1 gold.
 ;END CODE
 EndFunction
 ;END FRAGMENT

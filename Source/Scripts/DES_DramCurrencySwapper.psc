@@ -12,6 +12,11 @@ Form LastCurrency
 
 Import SEA_BarterFunctions 
 
+EVENT OnInit()
+	Utility.Wait(5)
+	(Quest.GetQuest("DES_CoinHandler") as DES_DefaultCoins).DramValue = 0.33
+ENDEVENT
+
 EVENT OnLocationChange(Location akOldLoc, Location akNewLoc)
 	IF PlayerRef.IsInLocation(DLC2RavenRockLocation) || PlayerRef.IsInLocation(DLC2TelMithrynLocation)
 	;debug.messagebox("We are in Morrowind.")

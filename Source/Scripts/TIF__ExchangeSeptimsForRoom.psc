@@ -6,7 +6,7 @@ Scriptname TIF__ExchangeSeptimsForRoom Extends TopicInfo Hidden
 Function Fragment_0(ObjectReference akSpeakerRef)
 Actor akSpeaker = akSpeakerRef as Actor
 ;BEGIN CODE
-Exchange.SeptimsForDramsForRoom(Gold001, RoomCost.GetValue() as int)
+Exchange.ForDramsRoom(Gold001, RoomCost.GetValue() as int)
 ;END CODE
 EndFunction
 ;END FRAGMENT

@@ -1,7 +1,7 @@
 {
   "rules" : [
     {
-      "friendlyName" : "Solstheim Septims to Drams",
+      "friendlyName" : "Solstheim Septims to Dram/Septim.",
       "conditions" : {
         "locations" : [
           "0x16E2A|Dragonborn.esm"

@@ -6,7 +6,7 @@ Scriptname TIF__ExchangeALLSeptimsForDrams Extends TopicInfo Hidden
 Function Fragment_0(ObjectReference akSpeakerRef)
 Actor akSpeaker = akSpeakerRef as Actor
 ;BEGIN CODE
-Exchange.SeptimsForDrams(Gold001, PlayerRef.getItemCount(Gold001))
+Exchange.ForDrams(Gold001, PlayerRef.getItemCount(Gold001))
 ;END CODE
 EndFunction
 ;END FRAGMENT
