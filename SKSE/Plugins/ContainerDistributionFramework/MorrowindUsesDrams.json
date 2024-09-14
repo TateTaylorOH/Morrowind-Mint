@@ -1,0 +1,74 @@
+{
+  "rules" : [
+    {
+      "friendlyName" : "Solstheim Septims to Drams",
+      "conditions" : {
+        "locations" : [
+          "0x16E2A|Dragonborn.esm"
+        ],
+        "bypassUnsafeContainers": true
+      },
+      "changes":[
+        {
+          "remove" : "0xF|Skyrim.esm",
+          "add" : [
+            "0x6B|MorrowindUsesDrams.esp"
+          ]
+        }
+      ]
+    },
+    {
+      "friendlyName" : "Nordic Ruin Exclusion",
+      "conditions" : {
+        "locationKeywords" : [
+          "LocSetNordicRuin"
+        ],
+        "bypassUnsafeContainers": true
+      },
+      "changes":[
+        {
+          "remove" : "0xDE5029|Update.esm",
+          "add" : [
+            "0xF|Skyrim.esm"
+          ]
+        }
+      ]
+    },
+    {
+      "friendlyName" : "Dwarven Ruin Exclusion",
+      "conditions" : {
+        "locationKeywords" : [
+          "LocSetDwarvenRuin"
+        ],
+        "bypassUnsafeContainers": true
+      },
+      "changes":[
+        {
+          "remove" : "0xDE5029|Update.esm",
+          "add" : [
+            "0xF|Skyrim.esm"
+          ]
+        }
+      ]
+    },
+    {
+      "friendlyName" : "Fill Vendor Chests with Drams",
+      "conditions" : {
+        "locations" : [
+          "0x16E2A|Dragonborn.esm"
+       ],
+        "bypassUnsafeContainers": true,
+        "allowVendors" : true,
+        "onlyVendors" : true
+      },
+      "changes":[
+        {
+          "remove" : "0xF|Skyrim.esm",
+          "add" : [
+            "0x6C|MorrowindUsesDrams.esp"
+          ]
+        }
+      ]
+    }
+  ]
+}
