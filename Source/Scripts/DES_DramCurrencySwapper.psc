@@ -7,14 +7,33 @@ Perk Property DES_MorrowindPriceAdjustmentPerk auto
 Location Property DLC2RavenRockLocation auto
 Location Property DLC2TelMithrynLocation auto
 
+Quest Property DES_DramMorrowindServicesQuest auto
+
 Bool ShouldRevertCurrency
 Form LastCurrency
 
 Import SEA_BarterFunctions 
 
 EVENT OnInit()
-	Utility.Wait(5)
-	(Quest.GetQuest("DES_CoinHandler") as DES_DefaultCoins).DramValue = 0.33
+	IF Game.IsPluginInstalled("WindhelmUsesUlfrics.esp")
+		(DES_DramMorrowindServicesQuest as DES_ExchangeDramsFunctions).Ulfric = 1
+	ENDIF
+
+	;IF (Quest.GetQuest("DES_CoinHandler") as DES_DefaultCoins).DramValue != 0.33
+	;	Utility.Wait(5)
+	;	(Quest.GetQuest("DES_CoinHandler") as DES_DefaultCoins).DramValue = 0.33
+	;ENDIF
+ENDEVENT
+
+EVENT OnPlayerGameLoad()
+	IF Game.IsPluginInstalled("WindhelmUsesUlfrics.esp")
+		(DES_DramMorrowindServicesQuest as DES_ExchangeDramsFunctions).Ulfric = 1
+	ENDIF
+
+	;IF (Quest.GetQuest("DES_CoinHandler") as DES_DefaultCoins).DramValue != 0.33
+	;	Utility.Wait(5)
+	;	(Quest.GetQuest("DES_CoinHandler") as DES_DefaultCoins).DramValue = 0.33
+	;ENDIF
 ENDEVENT
 
 EVENT OnLocationChange(Location akOldLoc, Location akNewLoc)
