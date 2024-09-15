@@ -41,6 +41,5 @@ endfunction
 
 ;--------------------------------------------------
 
-Int Property AskedWho Auto Conditional
-Int Property AskedDram Auto Conditional
+Int Property HasVended Auto Conditional
 Int Property Ulfric Auto Conditional
