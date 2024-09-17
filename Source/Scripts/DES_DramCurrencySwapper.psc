@@ -9,31 +9,21 @@ Location Property DLC2TelMithrynLocation auto
 
 Quest Property DES_DramMorrowindServicesQuest auto
 
+FormList Property DES_RentRoomLocationExclusions  Auto
+GlobalVariable Property RoomCost auto  
+GlobalVariable Property DES_DramRoomCost auto  
+
 Bool ShouldRevertCurrency
 Form LastCurrency
 
 Import SEA_BarterFunctions 
 
 EVENT OnInit()
-	IF Game.IsPluginInstalled("WindhelmUsesUlfrics.esp")
-		(DES_DramMorrowindServicesQuest as DES_ExchangeDramsFunctions).Ulfric = 1
-	ENDIF
-
-	;IF (Quest.GetQuest("DES_CoinHandler") as DES_DefaultCoins).DramValue != 0.33
-	;	Utility.Wait(5)
-	;	(Quest.GetQuest("DES_CoinHandler") as DES_DefaultCoins).DramValue = 0.33
-	;ENDIF
+	InitializeThings()
 ENDEVENT
 
 EVENT OnPlayerGameLoad()
-	IF Game.IsPluginInstalled("WindhelmUsesUlfrics.esp")
-		(DES_DramMorrowindServicesQuest as DES_ExchangeDramsFunctions).Ulfric = 1
-	ENDIF
-
-	;IF (Quest.GetQuest("DES_CoinHandler") as DES_DefaultCoins).DramValue != 0.33
-	;	Utility.Wait(5)
-	;	(Quest.GetQuest("DES_CoinHandler") as DES_DefaultCoins).DramValue = 0.33
-	;ENDIF
+	InitializeThings()
 ENDEVENT
 
 EVENT OnLocationChange(Location akOldLoc, Location akNewLoc)
@@ -51,6 +41,11 @@ EVENT OnLocationChange(Location akOldLoc, Location akNewLoc)
 			ShouldRevertCurrency = True
 		ENDIF
 		SetCurrency(DES_Dram)
+		float DramRoomCost = RoomCost.GetValue()*3
+		;debug.notification("Roomcost * 3 = " + dramroomcost)
+		DES_DramRoomCost.SetValue(DramRoomCost)
+		DES_DramMorrowindServicesQuest.UpdateCurrentInstanceGlobal(DES_DramRoomCost)
+		;debug.notification("Dram RoomCost = " + DES_DramRoomCost.GetValue())	
 	ELSEIF !PlayerRef.IsInLocation(DLC2RavenRockLocation) && !PlayerRef.IsInLocation(DLC2TelMithrynLocation)
 	;debug.messagebox("We are not in Morrowind.")
 		IF (ShouldRevertCurrency)
@@ -64,3 +59,22 @@ EVENT OnLocationChange(Location akOldLoc, Location akNewLoc)
 		LastCurrency = GetCurrency()
 	ENDIF
 ENDEVENT
+
+Function InitializeThings()
+	IF !DES_RentRoomLocationExclusions.HasForm(DLC2RavenRockLocation)
+		DES_RentRoomLocationExclusions.AddForm(DLC2RavenRockLocation)
+	ENDIF
+
+	IF !DES_RentRoomLocationExclusions.HasForm(DLC2TelMithrynLocation)
+		DES_RentRoomLocationExclusions.AddForm(DLC2TelMithrynLocation)
+	ENDIF
+
+	IF Game.IsPluginInstalled("WindhelmUsesUlfrics.esp")
+		(DES_DramMorrowindServicesQuest as DES_ExchangeDramsFunctions).Ulfric = 1
+	ENDIF
+
+	;IF (Quest.GetQuest("DES_CoinHandler") as DES_DefaultCoins).DramValue != 0.33
+	;	Utility.Wait(5)
+	;	(Quest.GetQuest("DES_CoinHandler") as DES_DefaultCoins).DramValue = 0.33
+	;ENDIF
+endFunction
