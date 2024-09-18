@@ -15,6 +15,7 @@ EndFunction
 
 Actor Property PlayerREF Auto
 Form Property Gold001 Auto 
+Quest Property DES_DramMorrowindServicesQuest auto
 
 Bool ShouldRevertCurrency
 Form LastCurrency
@@ -34,6 +35,7 @@ Function BarterWithSeptims(Actor a_kVendor)
         ShouldRevertCurrency = True
     EndIf
     SetCurrency(Gold001)
+    (DES_DramMorrowindServicesQuest as DES_ExchangeDramsFunctions).BarteringInSeptims = 1 
 
     a_kVendor.ShowBarterMenu()
 
@@ -49,6 +51,7 @@ Function BarterWithSeptims(Actor a_kVendor)
     Else
 
         SetCurrency(LastCurrency)
+        (DES_DramMorrowindServicesQuest as DES_ExchangeDramsFunctions).BarteringInSeptims = 0 
     EndIf
 
 EndFunction

@@ -66,3 +66,4 @@ Int Property Intro Auto Conditional
 Int Property Ulfric Auto Conditional
 Int Property HasVended Auto Conditional
 Int Property Trespassing Auto Conditional
+Int Property BarteringInSeptims Auto Conditional
