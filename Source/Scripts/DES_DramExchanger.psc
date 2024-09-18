@@ -7,6 +7,7 @@ Location Property DLC2TelMithrynLocation auto
 Actor Property DES_DramExchangerRef auto
 
 Actor Property PlayerRef auto
+GlobalVariable property DES_DramWorth auto
 
 Event OnInit()
 	AddInventoryEventFilter(Gold001)
@@ -22,7 +23,7 @@ Event OnItemAdded(Form akBaseItem, int aiItemCount, ObjectReference akItemRefere
 		IF PlayerRef.IsInLocation(DLC2RavenRockLocation) || PlayerRef.IsInLocation(DLC2TelMithrynLocation)
 			IF !aksourceContainer
 				if akBaseItem == Gold001
-					int count = aiItemCount
+					int count = aiItemCount*(DES_DramWorth.GetValue() as int)
 					PlayerRef.removeItem(akBaseItem, count, true)
 					PlayerRef.addItem(DES_Dram, count, true)
 				endif
