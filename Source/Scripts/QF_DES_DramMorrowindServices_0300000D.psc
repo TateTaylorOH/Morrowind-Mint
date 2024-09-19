@@ -12,41 +12,6 @@ ReferenceAlias Property Alias_Player Auto
 ReferenceAlias Property Alias_Galos Auto
 ;END ALIAS PROPERTY
 
-;BEGIN FRAGMENT Fragment_5
-Function Fragment_5()
-;BEGIN CODE
-SetObjectiveDisplayed(10)
-Alias_Player.AddInventoryEventFilter(DES_Dram)
-(DES_DramMorrowindServicesQuest as DES_ExchangeDramsFunctions).HasVended = 1
-;END CODE
-EndFunction
-;END FRAGMENT
-
-;BEGIN FRAGMENT Fragment_0
-Function Fragment_0()
-;BEGIN CODE
-SetObjectiveDisplayed(0)
-;END CODE
-EndFunction
-;END FRAGMENT
-
-;BEGIN FRAGMENT Fragment_6
-Function Fragment_6()
-;BEGIN CODE
-SetObjectiveCompleted(10)
-Alias_Player.RemoveAllInventoryEventFilters()
-;END CODE
-EndFunction
-;END FRAGMENT
-
-;BEGIN FRAGMENT Fragment_8
-Function Fragment_8()
-;BEGIN CODE
-Alias_Player.RemoveAllInventoryEventFilters()
-;END CODE
-EndFunction
-;END FRAGMENT
-
 ;BEGIN FRAGMENT Fragment_1
 Function Fragment_1()
 ;BEGIN CODE
@@ -59,6 +24,23 @@ Ledger.Delete()
 EndFunction
 ;END FRAGMENT
 
+;BEGIN FRAGMENT Fragment_0
+Function Fragment_0()
+;BEGIN CODE
+SetObjectiveDisplayed(0)
+;END CODE
+EndFunction
+;END FRAGMENT
+
+;BEGIN FRAGMENT Fragment_5
+Function Fragment_5()
+;BEGIN CODE
+SetObjectiveDisplayed(10)
+Alias_Player.AddInventoryEventFilter(DES_Dram)
+;END CODE
+EndFunction
+;END FRAGMENT
+
 ;BEGIN FRAGMENT Fragment_4
 Function Fragment_4()
 ;BEGIN CODE
@@ -67,6 +49,23 @@ SetObjectiveDisplayed(0,abDisplayed = false)
 Alias_Galos.trytoEvaluatePackage()
 Ledger.Disable()
 Ledger.Delete()
+;END CODE
+EndFunction
+;END FRAGMENT
+
+;BEGIN FRAGMENT Fragment_8
+Function Fragment_8()
+;BEGIN CODE
+Alias_Player.RemoveAllInventoryEventFilters()
+;END CODE
+EndFunction
+;END FRAGMENT
+
+;BEGIN FRAGMENT Fragment_6
+Function Fragment_6()
+;BEGIN CODE
+SetObjectiveCompleted(10)
+Alias_Player.RemoveAllInventoryEventFilters()
 ;END CODE
 EndFunction
 ;END FRAGMENT
