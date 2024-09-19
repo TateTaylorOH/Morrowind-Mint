@@ -22,8 +22,15 @@ Event OnPlayerGameLoad()
 	SEA_BarterFunctions.RegisterFormForAllEvents(getowningquest())
 endevent
 
+auto state Waiting
+endstate
+
+state waitingOnDrams
+
 Event OnItemAdded(Form akBaseItem, int aiItemCount, ObjectReference akItemReference, ObjectReference akSourceContainer)
 	if !getOwningQuest().IsStageDone(16) && getOwningQuest().IsStageDone(10) && akBaseItem == DES_Dram
 		getOwningQuest().SetStage(15)
 	endif
 endevent
+
+endState
