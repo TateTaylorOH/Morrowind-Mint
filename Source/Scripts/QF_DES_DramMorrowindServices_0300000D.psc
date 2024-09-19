@@ -37,6 +37,7 @@ Function Fragment_5()
 ;BEGIN CODE
 SetObjectiveDisplayed(10)
 Alias_Player.AddInventoryEventFilter(DES_Dram)
+(Alias_Player as DES_PlayerLeavesAndGalosGivesUp).GoToState("WaitingOnDrams")
 ;END CODE
 EndFunction
 ;END FRAGMENT
@@ -56,6 +57,7 @@ EndFunction
 ;BEGIN FRAGMENT Fragment_8
 Function Fragment_8()
 ;BEGIN CODE
+(Alias_Player as DES_PlayerLeavesAndGalosGivesUp).GoToState("Waiting")
 Alias_Player.RemoveAllInventoryEventFilters()
 ;END CODE
 EndFunction
