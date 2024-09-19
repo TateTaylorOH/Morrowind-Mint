@@ -23,7 +23,7 @@ Event OnItemAdded(Form akBaseItem, int aiItemCount, ObjectReference akItemRefere
 		IF  DES_DramSeptimLocations.HasForm(PlayerRef.GetCurrentLocation()) || DES_DramSeptimLocations.HasForm(PlayerRef.GetCurrentLocation().GetParent())
 			IF !aksourceContainer
 				if akBaseItem == Gold001
-					int count = aiItemCount*(DES_DramWorth.GetValue() as int)
+					int count = aiItemCount*(DES_DramWorth.GetValue() as float)
 					PlayerRef.removeItem(akBaseItem, count, true)
 					PlayerRef.addItem(DES_Dram, count, true)
 				endif
