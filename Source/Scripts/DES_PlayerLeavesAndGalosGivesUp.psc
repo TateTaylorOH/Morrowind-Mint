@@ -23,7 +23,7 @@ Event OnPlayerGameLoad()
 endevent
 
 Event OnItemAdded(Form akBaseItem, int aiItemCount, ObjectReference akItemReference, ObjectReference akSourceContainer)
-	if getOwningQuest().IsStageDone(10) && akBaseItem == DES_Dram
+	if !getOwningQuest().IsStageDone(16) && getOwningQuest().IsStageDone(10) && akBaseItem == DES_Dram
 		getOwningQuest().SetStage(15)
 	endif
 endevent
