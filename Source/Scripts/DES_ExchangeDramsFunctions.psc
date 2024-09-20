@@ -76,7 +76,7 @@ import SEA_BarterFunctions
 
 Event OnCustomBarterMenu(Actor a_kSeller)
 	If GetCurrency() == DES_Dram
-		IF PlayerRef.GetItemCount(DES_Dram) == 0
+		IF !getStageDone(16) && PlayerRef.GetItemCount(DES_Dram) == 0
 			setstage(10)
 		elseif PlayerRef.GetItemCount(DES_Dram) > 0
 			setstage(16)
