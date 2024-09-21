@@ -81,9 +81,10 @@ Function InitializeThings()
 	
 	goldValue = 1/DES_DramWorth.GetValue()
 	DES_Dram.SetGoldValue(goldValue as int)
-	
+
 	IF (Quest.GetQuest("DES_CoinHandler") as DES_DefaultCoins).DramValue != 0.33
 		Utility.Wait(5)
 		(Quest.GetQuest("DES_CoinHandler") as DES_DefaultCoins).DramValue = 0.33
 	ENDIF
+	
 endFunction
