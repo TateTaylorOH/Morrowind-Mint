@@ -20,6 +20,10 @@ GlobalVariable Property DES_UlfricChanceNone auto
 Bool ShouldRevertCurrency
 Form LastCurrency
 
+globalvariable property DES_DramWorth auto
+
+float goldValue
+
 Import SEA_BarterFunctions 
 
 EVENT OnInit()
@@ -74,7 +78,10 @@ Function InitializeThings()
 	IF Game.IsPluginInstalled("WindhelmUsesUlfrics.esp")
 		DES_UlfricChanceNone.SetValue(0)
 	ENDIF
-
+	
+	goldValue = 1/DES_DramWorth.GetValue()
+	DES_Dram.SetGoldValue(goldValue as int)
+	
 	IF (Quest.GetQuest("DES_CoinHandler") as DES_DefaultCoins).DramValue != 0.33
 		Utility.Wait(5)
 		(Quest.GetQuest("DES_CoinHandler") as DES_DefaultCoins).DramValue = 0.33
