@@ -18,7 +18,7 @@
       ]
     },
     {
-      "friendlyName" : "Nordic Ruin Exclusion",
+      "friendlyName" : "Nordic Ruin Exclusion.",
       "conditions" : {
         "locationKeywords" : [
           "LocSetNordicRuin"
@@ -27,7 +27,7 @@
       },
       "changes":[
         {
-          "remove" : "0xDE5029|Update.esm",
+          "remove" : "0xDE5029|Update.esm.",
           "add" : [
             "0xF|Skyrim.esm"
           ]
@@ -35,7 +35,7 @@
       ]
     },
     {
-      "friendlyName" : "Dwarven Ruin Exclusion",
+      "friendlyName" : "Dwarven Ruin Exclusion.",
       "conditions" : {
         "locationKeywords" : [
           "LocSetDwarvenRuin"
@@ -52,7 +52,7 @@
       ]
     },
     {
-      "friendlyName" : "Fill Vendor Chests with Drams",
+      "friendlyName" : "Fill Vendor Chests with Drams.",
       "conditions" : {
         "locations" : [
           "0x16E2A|Dragonborn.esm"
@@ -71,7 +71,28 @@
       ]
     },
     {
-      "friendlyName" : "Fill Dram Safe",
+      "friendlyName" : "Fill Khajiit Vendor Chests with Drams.",
+      "conditions" : {
+        "references" : [
+          "0x7434C|Skyrim.esm",
+          "0x74353|Skyrim.esm",
+          "0x74355|Skyrim.esm"
+       ],
+        "bypassUnsafeContainers": true,
+        "allowVendors" : true,
+        "onlyVendors" : true
+      },
+      "changes":[
+        {
+          "remove" : "0xF|Skyrim.esm",
+          "add" : [
+            "0x6C|MorrowindUsesDrams.esp"
+          ]
+        }
+      ]
+    },
+    {
+      "friendlyName" : "Fill Dram Safe.",
       "conditions" : {
         "references" : [
           "0x128|MorrowindUsesDrams.esp"
@@ -88,7 +109,7 @@
       ]
     },
     {
-      "friendlyName" : "Fill Septim Safe",
+      "friendlyName" : "Fill Septim Safe.",
       "conditions" : {
         "references" : [
           "0x126|MorrowindUsesDrams.esp"
@@ -105,7 +126,7 @@
       ]
     },
     {
-      "friendlyName" : "Fill Ulfric Safe",
+      "friendlyName" : "Fill Ulfric Safe.",
       "conditions" : {
         "references" : [
           "0x127|MorrowindUsesDrams.esp"

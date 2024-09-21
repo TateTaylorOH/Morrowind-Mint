@@ -16,6 +16,9 @@ EndFunction
 Actor Property PlayerREF Auto
 Form Property Gold001 Auto 
 Quest Property DES_DramMorrowindServicesQuest auto
+miscobject property des_dram auto
+formlist property DES_DramFairMerchants auto
+perk property DES_MorrowindPriceAdjustmentPerk auto
 
 Bool ShouldRevertCurrency
 Form LastCurrency
@@ -34,6 +37,13 @@ Function BarterWithSeptims(Actor a_kVendor)
 
         ShouldRevertCurrency = True
     EndIf
+
+    IF DES_DramFairMerchants.HasForm(PlayerRef.GetCurrentLocation()) || DES_DramFairMerchants.HasForm(PlayerRef.GetCurrentLocation().GetParent())
+        If (PlayerREF.HasPerk(DES_MorrowindPriceAdjustmentPerk))
+            PlayerREF.RemovePerk(DES_MorrowindPriceAdjustmentPerk)
+        EndIf
+    ENDIF
+
     SetCurrency(Gold001)
     (DES_DramMorrowindServicesQuest as DES_ExchangeDramsFunctions).BarteringInSeptims = 1 
 
@@ -49,6 +59,11 @@ Function BarterWithSeptims(Actor a_kVendor)
 
         ResetCurrency()
     Else
+    IF lastcurrency == DES_Dram
+        If !(PlayerREF.HasPerk(DES_MorrowindPriceAdjustmentPerk))
+            PlayerREF.addPerk(DES_MorrowindPriceAdjustmentPerk)
+        EndIf
+    endif
 
         SetCurrency(LastCurrency)
         (DES_DramMorrowindServicesQuest as DES_ExchangeDramsFunctions).BarteringInSeptims = 0 
