@@ -35,10 +35,10 @@
       ]
     },
     {
-      "friendlyName" : "Fort Frostmoth Exclusion",
+      "friendlyName" : "Dwarven Ruin Exclusion",
       "conditions" : {
-        "locations" : [
-          "0x14293|Dragonborn.esm"
+        "locationKeywords" : [
+          "LocSetDwarvenRuin"
         ],
         "bypassUnsafeContainers": true
       },
@@ -52,10 +52,10 @@
       ]
     },
     {
-      "friendlyName" : "Dwarven Ruin Exclusion",
+      "friendlyName" : "Fort Frostmoth Exclusion",
       "conditions" : {
-        "locationKeywords" : [
-          "LocSetDwarvenRuin"
+        "locations" : [
+          "0x14293|Dragonborn.esm"
         ],
         "bypassUnsafeContainers": true
       },
