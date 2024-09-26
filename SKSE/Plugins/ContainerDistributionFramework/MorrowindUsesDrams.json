@@ -35,6 +35,23 @@
       ]
     },
     {
+      "friendlyName" : "Fort Frostmoth Exclusion",
+      "conditions" : {
+        "locations" : [
+          "0x14293|Dragonborn.esm"
+        ],
+        "bypassUnsafeContainers": true
+      },
+      "changes":[
+        {
+          "remove" : "0xDE5029|Update.esm",
+          "add" : [
+            "0xF|Skyrim.esm"
+          ]
+        }
+      ]
+    },
+    {
       "friendlyName" : "Dwarven Ruin Exclusion",
       "conditions" : {
         "locationKeywords" : [

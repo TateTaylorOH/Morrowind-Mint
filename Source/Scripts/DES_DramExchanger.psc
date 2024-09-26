@@ -24,7 +24,7 @@ Event OnItemAdded(Form akBaseItem, int aiItemCount, ObjectReference akItemRefere
 			IF !aksourceContainer
 				if akBaseItem == Gold001
 					float count = aiItemCount*DES_DramWorth.GetValue()
-					PlayerRef.removeItem(akBaseItem, count as int, true)
+					PlayerRef.removeItem(akBaseItem, aiItemCount as int, true)
 					PlayerRef.addItem(DES_Dram, count as int, true)
 				endif
 			ENDIF
