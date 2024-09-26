@@ -46,7 +46,7 @@ EVENT OnLocationChange(Location akOldLoc, Location akNewLoc)
 			ShouldRevertCurrency = True
 		ENDIF
 		SetCurrency(DES_Dram)
-		float DramRoomCost = RoomCost.GetValue()*3
+		float DramRoomCost = RoomCost.GetValue()*DES_DramWorth.GetValue()
 		;debug.notification("Roomcost * 3 = " + dramroomcost)
 		DES_DramRoomCost.SetValue(DramRoomCost)
 		DES_DramMorrowindServicesQuest.UpdateCurrentInstanceGlobal(DES_DramRoomCost)
