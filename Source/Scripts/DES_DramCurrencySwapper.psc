@@ -47,7 +47,7 @@ EVENT OnLocationChange(Location akOldLoc, Location akNewLoc)
 		ENDIF
 		SetCurrency(DES_Dram)
 		float DramRoomCost = RoomCost.GetValue()*DES_DramWorth.GetValue()
-		;debug.notification("Roomcost * 3 = " + dramroomcost)
+		;debug.notification(RoomCost.GetValue() + " * " + DES_DramWorth.GetValue() + " = " + dramroomcost)
 		DES_DramRoomCost.SetValue(DramRoomCost)
 		DES_DramMorrowindServicesQuest.UpdateCurrentInstanceGlobal(DES_DramRoomCost)
 		(DES_DramMorrowindServicesQuest as DES_ExchangeDramsFunctions).Ulfric = (Quest.GetQuest("DES_UlfricWindhelmServices") as DES_ExchangeSeptimsFunctions).DecreeSceneComplete
