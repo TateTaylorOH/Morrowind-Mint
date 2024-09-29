@@ -17,8 +17,7 @@ GlobalVariable Property RoomCost auto
 GlobalVariable Property DES_DramRoomCost auto  
 GlobalVariable Property DES_UlfricChanceNone auto  
 
-Bool ShouldRevertCurrency
-Form LastLocation
+GlobalVariable Property DES_CurrencyIsReverting auto
 
 globalvariable property DES_DramWorth auto
 
@@ -35,44 +34,47 @@ EVENT OnPlayerGameLoad()
 ENDEVENT
 
 EVENT OnLocationChange(Location akOldLoc, Location akNewLoc)
-	int i = DES_DramSeptimLocations.Find(akNewLoc)
-	IF (PlayerRef.IsInLocation(DES_DramSeptimLocations.GetAt(i) as Location))
-		SwapToDrams()
-	ELSEIF i == -1
-	;debug.messagebox("We are not in Morrowind.")
-		ResetCurrency()
-		;debug.notification("ResetCurrency")
-		PlayerREF.RemovePerk(DES_MorrowindPriceAdjustmentPerk)
+	IF (DES_DramSeptimLocations.HasForm(PlayerRef.GetCurrentLocation())) || (DES_DramSeptimLocations.HasForm(PlayerRef.GetCurrentLocation().GetParent()))
+		RegisterForSingleUpdate(1)
+	ELSE
+		;debug.messagebox("We are not in Morrowind.")
+		IF GetCurrency() == DES_Dram
+			DES_CurrencyIsReverting.SetValue(1)
+			;debug.notification("DramMod: CurrencyIsReverting = " + DES_CurrencyIsReverting.GetValue())
+			ResetCurrency()
+			;debug.notification("DramMod: ResetCurrency")
+			PlayerREF.RemovePerk(DES_MorrowindPriceAdjustmentPerk)
+			DES_CurrencyIsReverting.SetValue(0)
+			;debug.notification("DramMod: CurrencyIsReverting = " + DES_CurrencyIsReverting.GetValue())
+		ENDIF
 	ENDIF
-	LastLocation = akNewLoc
 ENDEVENT
 
-Event OnCurrencyRevert(Form a_kOldCurrency)
-	int i = DES_DramSeptimLocations.Find(LastLocation)
-	IF (PlayerRef.IsInLocation(DES_DramSeptimLocations.GetAt(i) as Location))
-		SwapToDrams()
-	ENDIF
-	LastLocation = NONE
-EndEvent
+Event OnUpdate()
+	SwapToDrams()
+endEvent
 
 Function SwapToDrams()
 	;debug.messagebox("We are in Morrowind.")
+	while DES_CurrencyIsReverting.GetValue() == 1
+		utility.wait(0.1)
+		;debug.notification("DramMod: Waiting to swap")
+	endwhile
 	IF (PlayerREF.HasPerk(DES_MorrowindPriceAdjustmentPerk))
 		PlayerREF.RemovePerk(DES_MorrowindPriceAdjustmentPerk)
 	ENDIF
-	;debug.notification("LastCurrency is " + LastCurrency.GetName())
-	SetCurrency(DES_Dram)
+	PlayerREF.AddPerk(DES_MorrowindPriceAdjustmentPerk)
 	float DramRoomCost = RoomCost.GetValue()*DES_DramWorth.GetValue()
 	;debug.notification(RoomCost.GetValue() + " * " + DES_DramWorth.GetValue() + " = " + dramroomcost)
 	DES_DramRoomCost.SetValue(DramRoomCost)
 	DES_DramMorrowindServicesQuest.UpdateCurrentInstanceGlobal(DES_DramRoomCost)
 	(DES_DramMorrowindServicesQuest as DES_ExchangeDramsFunctions).Ulfric = (Quest.GetQuest("DES_UlfricWindhelmServices") as DES_ExchangeSeptimsFunctions).DecreeSceneComplete
 	;debug.notification("Dram RoomCost = " + DES_DramRoomCost.GetValue())
+	SetCurrency(DES_Dram)
+	;debug.notification("DramMod: Swapped")
 endFunction
 
-
 Function InitializeThings()
-	SEA_BarterFunctions.RegisterFormForAllEvents(getowningquest())
 
 	IF !DES_RentRoomLocationExclusions.HasForm(DLC2RavenRockLocation)
 		DES_RentRoomLocationExclusions.AddForm(DLC2RavenRockLocation)

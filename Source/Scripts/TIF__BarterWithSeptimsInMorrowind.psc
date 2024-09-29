@@ -44,7 +44,7 @@ Function BarterWithSeptims(Actor a_kVendor)
         EndIf
     ENDIF
 
-    SetCurrency(Gold001)
+    ResetCurrency()
     (DES_DramMorrowindServicesQuest as DES_ExchangeDramsFunctions).BarteringInSeptims = 1 
 
     a_kVendor.ShowBarterMenu()
