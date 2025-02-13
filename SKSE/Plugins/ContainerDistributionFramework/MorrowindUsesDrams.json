@@ -10,7 +10,7 @@
           "LocSetNordicRuin, LocSetDwarvenRuin"
         ],
         "!locations" : [
-          "0x14293|Dragonborn.esm"
+          "0x14293|Dragonborn.esm" //Fort Frostmoth
         ],
         "bypassUnsafeContainers": true
       },
