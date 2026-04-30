@@ -1,6 +1,6 @@
 ;BEGIN FRAGMENT CODE - Do not edit anything between this and the end comment
 ;NEXT FRAGMENT INDEX 9
-Scriptname QF_DES_DramMorrowindServices_0300000D Extends Quest Hidden
+Scriptname QF_DES_DramMorrowindServices_0300000D Extends Quest Hidden Conditional
 
 ;BEGIN ALIAS PROPERTY Player
 ;ALIAS PROPERTY TYPE ReferenceAlias
@@ -51,3 +51,13 @@ Quest Property DES_DramMorrowindServicesQuest  Auto
 ObjectReference Property Ledger  Auto  
 
 MiscObject Property DES_Dram  Auto  
+
+Int Property Intro Auto Conditional
+
+Int Property HasVended Auto Conditional
+
+Int Property Trespassing Auto Conditional
+
+Int Property BarteringInSeptims Auto Conditional
+
+Int Property Ulfric Auto Conditional

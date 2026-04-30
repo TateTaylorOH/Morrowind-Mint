@@ -44,7 +44,7 @@ Function UpdateCosts()
 	float DramRoomCost = RoomCost.GetValue()*DES_DramWorth.GetValue()
 	DES_DramRoomCost.SetValue(DramRoomCost)
 	GetOwningQuest().UpdateCurrentInstanceGlobal(DES_DramRoomCost)
-	(GetOwningQuest() as DES_ExchangeDramsFunctions).Ulfric = (Quest.GetQuest("DES_UlfricWindhelmServices") as QF_DES_UlfricWindhelmService_03000002).DecreeSceneComplete
+	(GetOwningQuest() as QF_DES_DramMorrowindServices_0300000D).Ulfric = (Quest.GetQuest("DES_UlfricWindhelmServices") as QF_DES_UlfricWindhelmService_03000002).DecreeSceneComplete
 endFunction
 
 ;--------------------------------------------------
