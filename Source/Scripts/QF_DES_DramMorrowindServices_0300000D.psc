@@ -1,6 +1,6 @@
 ;BEGIN FRAGMENT CODE - Do not edit anything between this and the end comment
 ;NEXT FRAGMENT INDEX 9
-Scriptname QF_DES_DramMorrowindServices_0300000D Extends Quest Hidden
+Scriptname QF_DES_DramMorrowindServices_0300000D Extends Quest Hidden Conditional
 
 ;BEGIN ALIAS PROPERTY Player
 ;ALIAS PROPERTY TYPE ReferenceAlias
@@ -32,16 +32,6 @@ SetObjectiveDisplayed(0)
 EndFunction
 ;END FRAGMENT
 
-;BEGIN FRAGMENT Fragment_5
-Function Fragment_5()
-;BEGIN CODE
-SetObjectiveDisplayed(10)
-(Alias_Player as DES_PlayerLeavesAndGalosGivesUp).GoToState("WaitingOnDrams")
-Alias_Player.AddInventoryEventFilter(DES_Dram)
-;END CODE
-EndFunction
-;END FRAGMENT
-
 ;BEGIN FRAGMENT Fragment_4
 Function Fragment_4()
 ;BEGIN CODE
@@ -54,24 +44,6 @@ Ledger.Delete()
 EndFunction
 ;END FRAGMENT
 
-;BEGIN FRAGMENT Fragment_8
-Function Fragment_8()
-;BEGIN CODE
-(Alias_Player as DES_PlayerLeavesAndGalosGivesUp).GoToState("Waiting")
-Alias_Player.RemoveAllInventoryEventFilters()
-;END CODE
-EndFunction
-;END FRAGMENT
-
-;BEGIN FRAGMENT Fragment_6
-Function Fragment_6()
-;BEGIN CODE
-SetObjectiveCompleted(10)
-Alias_Player.RemoveAllInventoryEventFilters()
-;END CODE
-EndFunction
-;END FRAGMENT
-
 ;END FRAGMENT CODE - Do not edit anything between this and the begin comment
 
 Quest Property DES_DramMorrowindServicesQuest  Auto  
@@ -79,3 +51,13 @@ Quest Property DES_DramMorrowindServicesQuest  Auto
 ObjectReference Property Ledger  Auto  
 
 MiscObject Property DES_Dram  Auto  
+
+Int Property Intro Auto Conditional
+
+Int Property HasVended Auto Conditional
+
+Int Property Trespassing Auto Conditional
+
+Int Property BarteringInSeptims Auto Conditional
+
+Int Property Ulfric Auto Conditional
