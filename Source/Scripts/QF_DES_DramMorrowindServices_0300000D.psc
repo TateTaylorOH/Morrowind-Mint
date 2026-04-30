@@ -12,18 +12,6 @@ ReferenceAlias Property Alias_Player Auto
 ReferenceAlias Property Alias_Galos Auto
 ;END ALIAS PROPERTY
 
-;BEGIN FRAGMENT Fragment_1
-Function Fragment_1()
-;BEGIN CODE
-SetObjectiveCompleted(0)
-(DES_DramMorrowindServicesQuest as DES_ExchangeDramsFunctions).Intro = 1
-Alias_Galos.trytoEvaluatePackage()
-Ledger.Disable()
-Ledger.Delete()
-;END CODE
-EndFunction
-;END FRAGMENT
-
 ;BEGIN FRAGMENT Fragment_0
 Function Fragment_0()
 ;BEGIN CODE
@@ -36,7 +24,19 @@ EndFunction
 Function Fragment_4()
 ;BEGIN CODE
 SetObjectiveDisplayed(0,abDisplayed = false)
-(DES_DramMorrowindServicesQuest as DES_ExchangeDramsFunctions).Intro = 1
+Intro = 1
+Alias_Galos.trytoEvaluatePackage()
+Ledger.Disable()
+Ledger.Delete()
+;END CODE
+EndFunction
+;END FRAGMENT
+
+;BEGIN FRAGMENT Fragment_1
+Function Fragment_1()
+;BEGIN CODE
+SetObjectiveCompleted(0)
+Intro = 1
 Alias_Galos.trytoEvaluatePackage()
 Ledger.Disable()
 Ledger.Delete()
