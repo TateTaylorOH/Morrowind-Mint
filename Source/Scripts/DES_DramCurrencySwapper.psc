@@ -1,6 +1,6 @@
 Scriptname DES_DramCurrencySwapper extends ReferenceAlias
 
-Quest Property DES_CurrencyFramework auto
+DES_CurrencyFramework_Functions Property CurrencyFunctions auto
 Actor Property PlayerRef auto
 MiscObject Property DES_Dram Auto 
 
@@ -66,5 +66,5 @@ Perk Property DES_MorrowindPriceAdjustmentPerk auto
 
 EVENT OnLocationChange(Location akOldLoc, Location akNewLoc)
 	UpdateCosts()
-	(DES_CurrencyFramework as DES_CurrencyFramework_Functions).SwapCurrency(DES_DramLocations, DES_MorrowindPriceAdjustmentPerk, DES_Dram)
+	CurrencyFunctions.SwapCurrency(DES_DramLocations, DES_MorrowindPriceAdjustmentPerk, DES_Dram)
 ENDEVENT
