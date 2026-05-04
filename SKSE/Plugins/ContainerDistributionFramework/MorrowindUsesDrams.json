@@ -4,22 +4,22 @@
       "friendlyName" : "Solstheim Septims to Dram/Septim",
       "conditions" : {
         "locations" : [
-          "0x16E2A|Dragonborn.esm"
+          "16E2A|Dragonborn.esm"
         ],
         "!locationKeywords" : [
           "LocSetNordicRuin",
           "LocSetDwarvenRuin"
         ],
         "!locations" : [
-          "0x14293|Dragonborn.esm" //Fort Frostmoth
+          "14293|Dragonborn.esm" //Fort Frostmoth
         ],
         "bypassUnsafeContainers": true
       },
       "changes":[
         {
-          "remove" : "0xF|Skyrim.esm",
+          "remove" : "F|Skyrim.esm",
           "add" : [
-            "0x6B|MorrowindUsesDrams.esp"
+            "6B|MorrowindUsesDrams.esp"
           ]
         }
       ]
@@ -28,7 +28,7 @@
       "friendlyName" : "Fill Vendor Chests with Drams",
       "conditions" : {
         "locations" : [
-          "0x16E2A|Dragonborn.esm"
+          "16E2A|Dragonborn.esm"
        ],
         "bypassUnsafeContainers": true,
         "allowVendors" : true,
@@ -36,9 +36,9 @@
       },
       "changes":[
         {
-          "remove" : "0xF|Skyrim.esm",
+          "remove" : "F|Skyrim.esm",
           "add" : [
-            "0x6C|MorrowindUsesDrams.esp"
+            "6C|MorrowindUsesDrams.esp"
           ]
         }
       ]
@@ -47,14 +47,14 @@
       "friendlyName" : "Fill Dram Safe",
       "conditions" : {
         "references" : [
-          "0x128|MorrowindUsesDrams.esp"
+          "128|MorrowindUsesDrams.esp"
        ],
         "bypassUnsafeContainers": true
       },
       "changes":[
         {
           "add" : [
-            "0xDE5029|Update.esm"
+            "DE5029|Update.esm"
           ],
           "count" : 3000
         }
@@ -64,14 +64,14 @@
       "friendlyName" : "Fill Septim Safe",
       "conditions" : {
         "references" : [
-          "0x126|MorrowindUsesDrams.esp"
+          "126|MorrowindUsesDrams.esp"
        ],
         "bypassUnsafeContainers": true
       },
       "changes":[
         {
           "add" : [
-            "0xF|Skyrim.esm"
+            "F|Skyrim.esm"
           ],
           "count" : 1000
         }
@@ -81,7 +81,7 @@
       "friendlyName" : "Fill Ulfric Safe",
       "conditions" : {
         "references" : [
-          "0x127|MorrowindUsesDrams.esp"
+          "127|MorrowindUsesDrams.esp"
        ],
         "bypassUnsafeContainers": true,
         "plugins" : [
@@ -91,7 +91,7 @@
       "changes":[
         {
           "add" : [
-            "0x6CE|MorrowindUsesDrams.esp"
+            "6CE|MorrowindUsesDrams.esp"
           ],
           "count" : 1000
         }
