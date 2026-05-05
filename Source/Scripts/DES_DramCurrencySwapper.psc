@@ -58,7 +58,7 @@ Formlist Property DES_DramLocations auto
 Perk Property DES_MorrowindPriceAdjustmentPerk auto
 
 EVENT OnLocationChange(Location akOldLoc, Location akNewLoc)
-	While CurrencyFunctions.CurrencyIsSwapping == 1
+	While CurrencyFunctions.CurrencyIsSwapping
 		Utility.Wait(0.1)
 	endWhile
 	UpdateCosts()
