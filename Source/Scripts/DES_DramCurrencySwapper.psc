@@ -12,10 +12,6 @@ Location Property DLC2TelMithrynLocation auto
 
 Function Initialize()
 
-	While CurrencyFunctions.RevertingList == 1
-		Utility.Wait(0.1)
-	endWhile
-
 	IF !DES_CustomCurrencyLocations.HasForm(DLC2RavenRockLocation)
 		DES_CustomCurrencyLocations.AddForm(DLC2RavenRockLocation)
 	ENDIF
@@ -62,6 +58,9 @@ Formlist Property DES_DramLocations auto
 Perk Property DES_MorrowindPriceAdjustmentPerk auto
 
 EVENT OnLocationChange(Location akOldLoc, Location akNewLoc)
+	While CurrencyFunctions.CurrencyIsSwapping == 1
+		Utility.Wait(0.1)
+	endWhile
 	UpdateCosts()
 	CurrencyFunctions.SwapCurrency(DES_DramLocations, DES_MorrowindPriceAdjustmentPerk, DES_Dram)
 ENDEVENT
