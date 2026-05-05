@@ -6,26 +6,27 @@ MiscObject Property DES_Dram Auto
 
 ;--------------------------------------------------
 
-FormList Property DES_RentRoomLocationExclusions  Auto
+FormList Property DES_CustomCurrencyLocations Auto
 Location Property DLC2RavenRockLocation auto
 Location Property DLC2TelMithrynLocation auto
-float goldValue
 
-Function InitializeThings()
-	IF !DES_RentRoomLocationExclusions.HasForm(DLC2RavenRockLocation)
-		DES_RentRoomLocationExclusions.AddForm(DLC2RavenRockLocation)
+Function Initialize()
+
+	While CurrencyFunctions.RevertingList == 1
+		Utility.Wait(0.1)
+	endWhile
+
+	IF !DES_CustomCurrencyLocations.HasForm(DLC2RavenRockLocation)
+		DES_CustomCurrencyLocations.AddForm(DLC2RavenRockLocation)
 	ENDIF
 
-	IF !DES_RentRoomLocationExclusions.HasForm(DLC2TelMithrynLocation)
-		DES_RentRoomLocationExclusions.AddForm(DLC2TelMithrynLocation)
+	IF !DES_CustomCurrencyLocations.HasForm(DLC2TelMithrynLocation)
+		DES_CustomCurrencyLocations.AddForm(DLC2TelMithrynLocation)
 	ENDIF
 
 	IF Game.IsPluginInstalled("WindhelmUsesUlfrics.esp")
 		DES_UlfricChanceNone.SetValue(0)
 	ENDIF
-	
-	goldValue = 1/DES_DramWorth.GetValue()
-	DES_Dram.SetGoldValue(goldValue as int)
 
 endFunction
 
@@ -46,13 +47,13 @@ endFunction
 ;--------------------------------------------------
 
 EVENT OnInit()
-	InitializeThings()
+	Initialize()
 ENDEVENT
 
 ;--------------------------------------------------
 
 EVENT OnPlayerGameLoad()
-	InitializeThings()
+	Initialize()
 ENDEVENT
 
 ;--------------------------------------------------
