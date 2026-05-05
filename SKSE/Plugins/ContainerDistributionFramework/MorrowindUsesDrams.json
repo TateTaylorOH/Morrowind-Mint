@@ -12,7 +12,11 @@
         ],
         "!locations" : [
           "0x14293|Dragonborn.esm" //Fort Frostmoth
-        ]
+        ],
+        "!references" : [
+          "0x19AFF|Dragonborn.esm" //Prisoner Belongings Chest
+        ],
+        "bypassUnsafeContainers": true
       },
       "changes":[
         {
