@@ -12,16 +12,6 @@ Event OnLocationChange(Location akOldLoc, Location akNewLoc)
 	endif
 endEvent
 
-import SEA_BarterFunctions
-
-Event OnInit()
-	SEA_BarterFunctions.RegisterFormForAllEvents(getowningquest())
-endevent
-
-Event OnPlayerGameLoad()
-	SEA_BarterFunctions.RegisterFormForAllEvents(getowningquest())
-endevent
-
 auto state Waiting
 endstate
 
