@@ -14,7 +14,8 @@
           "0x14293|Dragonborn.esm" //Fort Frostmoth
         ],
         "!references" : [
-          "0x19AFF|Dragonborn.esm" //Prisoner Belongings Chest
+          "0x19AFF|Dragonborn.esm", //Prisoner Belongings Chest
+          "0x3CF1B|Dragonborn.esm" //Stolen Goods Chest
         ],
         "bypassUnsafeContainers": true
       },
@@ -43,60 +44,6 @@
           "add" : [
             "0x6C|MorrowindUsesDrams.esp"
           ]
-        }
-      ]
-    },
-    {
-      "friendlyName" : "Fill Dram Safe",
-      "conditions" : {
-        "references" : [
-          "0x128|MorrowindUsesDrams.esp"
-       ],
-        "bypassUnsafeContainers": true
-      },
-      "changes":[
-        {
-          "add" : [
-            "0xDE5029|Update.esm"
-          ],
-          "count" : 3000
-        }
-      ]
-    },
-    {
-      "friendlyName" : "Fill Septim Safe",
-      "conditions" : {
-        "references" : [
-          "0x126|MorrowindUsesDrams.esp"
-       ],
-        "bypassUnsafeContainers": true
-      },
-      "changes":[
-        {
-          "add" : [
-            "0xF|Skyrim.esm"
-          ],
-          "count" : 1000
-        }
-      ]
-    },
-    {
-      "friendlyName" : "Fill Ulfric Safe",
-      "conditions" : {
-        "references" : [
-          "0x127|MorrowindUsesDrams.esp"
-       ],
-        "bypassUnsafeContainers": true,
-        "plugins" : [
-          "WindhelmUsesUlfrics.esp"
-        ]
-      },
-      "changes":[
-        {
-          "add" : [
-            "0x6CE|MorrowindUsesDrams.esp"
-          ],
-          "count" : 1000
         }
       ]
     }
