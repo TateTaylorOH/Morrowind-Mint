@@ -8,7 +8,7 @@ Actor akSpeaker = akSpeakerRef as Actor
 ;BEGIN CODE
 ;Debug.Notification("trespass")
 Utility.Wait(7.5)
-IF (GetOwningQuest() as QF_DES_DramMorrowindServices_0300000D).Trespassing == 1
+IF (GetOwningQuest() as DES_DramQuestScript).Trespassing == 1
 	;Debug.Notification("you are trespassing")
 	akSpeaker.Say(DES_DramExchangerTresspassing)
 ENDIF
