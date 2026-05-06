@@ -1,6 +1,6 @@
 ;BEGIN FRAGMENT CODE - Do not edit anything between this and the end comment
 ;NEXT FRAGMENT INDEX 9
-Scriptname QF_DES_DramMorrowindServices_0300000D Extends Quest Hidden Conditional
+Scriptname QF_DES_DramMorrowindServices_0300000D Extends Quest Hidden
 
 ;BEGIN ALIAS PROPERTY Player
 ;ALIAS PROPERTY TYPE ReferenceAlias
@@ -24,7 +24,6 @@ EndFunction
 Function Fragment_4()
 ;BEGIN CODE
 SetObjectiveDisplayed(0,abDisplayed = false)
-Intro = 1
 Alias_Galos.trytoEvaluatePackage()
 Ledger.Disable()
 Ledger.Delete()
@@ -36,7 +35,6 @@ EndFunction
 Function Fragment_1()
 ;BEGIN CODE
 SetObjectiveCompleted(0)
-Intro = 1
 Alias_Galos.trytoEvaluatePackage()
 Ledger.Disable()
 Ledger.Delete()
@@ -51,13 +49,3 @@ Quest Property DES_DramMorrowindServicesQuest  Auto
 ObjectReference Property Ledger  Auto  
 
 MiscObject Property DES_Dram  Auto  
-
-Int Property Intro Auto Conditional
-
-Int Property HasVended Auto Conditional
-
-Int Property Trespassing Auto Conditional
-
-Int Property BarteringInSeptims Auto Conditional
-
-Int Property Ulfric Auto Conditional
