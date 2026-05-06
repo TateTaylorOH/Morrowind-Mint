@@ -1,5 +1,7 @@
 Scriptname DES_DramCurrencySwapper extends ReferenceAlias
 
+Import SEA_BarterFunctions 
+
 DES_CurrencyFramework_Functions Property CurrencyFunctions auto
 Actor Property PlayerRef auto
 MiscObject Property DES_Dram Auto 
@@ -64,3 +66,16 @@ EVENT OnLocationChange(Location akOldLoc, Location akNewLoc)
 	UpdateCosts()
 	CurrencyFunctions.SwapCurrency(DES_DramLocations, DES_MorrowindPriceAdjustmentPerk, DES_Dram)
 ENDEVENT
+
+;--------------------------------------------------
+;TUTORIAL
+;--------------------------------------------------
+
+Message Property DES_DramTutorialMessage auto
+
+Event OnCustomBarterMenu(Actor a_kSeller)
+;Triggers a one-time tutorial pop-up explaining how alternative currencies work.
+	IF GetCurrency() == DES_Dram
+		ShowTutorialMessage(DES_DramTutorialMessage)
+	ENDIF
+endEvent
