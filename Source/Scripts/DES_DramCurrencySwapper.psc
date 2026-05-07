@@ -1,4 +1,4 @@
-Scriptname DES_DramCurrencySwapper  extends DES_CurrencyFramework_Register Conditional
+Scriptname DES_DramCurrencySwapper  extends DES_CurrencyFramework_UtilityInt Conditional
 
 DES_CurrencyFramework_Functions Property CurrencyFunctions auto
 
@@ -43,6 +43,29 @@ endFunction
 
 ;--------------------------------------------------
 
+GlobalVariable Property RoomCost auto  
+GlobalVariable Property DES_DramRoomCost auto  
+GlobalVariable Property DES_UlfricChanceNone auto  
+globalvariable property DES_DramWorth auto
+
+Function UpdateCosts()
+	float DramRoomCost = RoomCost.GetValue()*DES_DramWorth.GetValue()
+	DES_DramRoomCost.SetValue(DramRoomCost)
+	UpdateCurrentInstanceGlobal(DES_DramRoomCost)
+	Ulfric = (Quest.GetQuest("DES_UlfricWindhelmServices")).GetStage()
+endFunction
+
+;--------------------------------------------------
+;EVENTS
+;--------------------------------------------------
+
+EVENT OnInit()
+	Utility.Wait(1)
+	Initialize()
+ENDEVENT
+
+;--------------------------------------------------
+
 Function OnPlayerLoadGame_Alias()
 
 	IF Game.IsPluginInstalled("WindhelmUsesUlfrics.esp")
@@ -71,29 +94,6 @@ Function OnLocationChange_Alias()
 	endif
 
 endFunction
-
-;--------------------------------------------------
-
-GlobalVariable Property RoomCost auto  
-GlobalVariable Property DES_DramRoomCost auto  
-GlobalVariable Property DES_UlfricChanceNone auto  
-globalvariable property DES_DramWorth auto
-
-Function UpdateCosts()
-	float DramRoomCost = RoomCost.GetValue()*DES_DramWorth.GetValue()
-	DES_DramRoomCost.SetValue(DramRoomCost)
-	UpdateCurrentInstanceGlobal(DES_DramRoomCost)
-	Ulfric = (Quest.GetQuest("DES_UlfricWindhelmServices")).GetStage()
-endFunction
-
-;--------------------------------------------------
-;EVENTS
-;--------------------------------------------------
-
-EVENT OnInit()
-	Utility.Wait(1)
-	Initialize()
-ENDEVENT
 
 ;--------------------------------------------------
 ;QUEST VARIABLES
