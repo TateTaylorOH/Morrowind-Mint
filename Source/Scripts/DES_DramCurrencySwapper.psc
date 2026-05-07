@@ -5,6 +5,8 @@ Actor Property PlayerRef auto
 MiscObject Property DES_Dram Auto 
 
 ;--------------------------------------------------
+;FUNCTIONS
+;--------------------------------------------------
 
 FormList Property DES_CustomCurrencyLocations Auto
 Location Property DLC2RavenRockLocation auto
@@ -19,6 +21,8 @@ Function Initialize()
 	IF !DES_CustomCurrencyLocations.HasForm(DLC2TelMithrynLocation)
 		DES_CustomCurrencyLocations.AddForm(DLC2TelMithrynLocation)
 	ENDIF
+
+	CurrencyFunctions.RegisterModuleQuest("MorrowindUsesDrams.esp", GetOwningQuest().GetFormID())
 
 	IF Game.IsPluginInstalled("WindhelmUsesUlfrics.esp")
 		DES_UlfricChanceNone.SetValue(0)
@@ -41,15 +45,20 @@ Function UpdateCosts()
 endFunction
 
 ;--------------------------------------------------
+;EVENTS
+;--------------------------------------------------
 
 EVENT OnInit()
+	Utility.Wait(1)
 	Initialize()
 ENDEVENT
 
 ;--------------------------------------------------
 
 EVENT OnPlayerGameLoad()
-	Initialize()
+	IF Game.IsPluginInstalled("WindhelmUsesUlfrics.esp")
+		DES_UlfricChanceNone.SetValue(0)
+	ENDIF
 ENDEVENT
 
 ;--------------------------------------------------
