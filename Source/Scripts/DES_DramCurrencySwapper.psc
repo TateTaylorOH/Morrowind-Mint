@@ -1,4 +1,4 @@
-Scriptname DES_DramCurrencySwapper extends Quest Conditional
+Scriptname DES_DramCurrencySwapper  extends DES_CurrencyFramework_Register Conditional
 
 DES_CurrencyFramework_Functions Property CurrencyFunctions auto
 
@@ -27,7 +27,13 @@ Function Initialize()
 		DES_CustomCurrencyLocations.AddForm(DLC2TelMithrynLocation)
 	ENDIF
 
-	CurrencyFunctions.RegisterModuleQuest("MorrowindUsesDrams.esp", GetFormID())
+	Int FormID = GetFormID()
+	Int HighBytes = Math.LogicalAnd(FormID, 0xFF000000)
+	If(HighBytes == 0xFE000000)
+		FormID = Math.LogicalAnd(FormID, 0x000FFFFF)
+	EndIf
+	FormID = Math.LogicalAnd(FormID, 0x00FFFFFF)
+	CurrencyFunctions.RegisterModuleQuest("MorrowindUsesDrams.esp", formid)
 
 	IF Game.IsPluginInstalled("WindhelmUsesUlfrics.esp")
 		DES_UlfricChanceNone.SetValue(0)
