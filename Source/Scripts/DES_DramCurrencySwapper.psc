@@ -1,6 +1,11 @@
-Scriptname DES_DramCurrencySwapper extends ReferenceAlias
+Scriptname DES_DramCurrencySwapper extends Quest Conditional
 
 DES_CurrencyFramework_Functions Property CurrencyFunctions auto
+
+;--------------------------------------------------
+;SHARED PROPERTIES
+;--------------------------------------------------
+
 Actor Property PlayerRef auto
 MiscObject Property DES_Dram Auto 
 
@@ -22,11 +27,42 @@ Function Initialize()
 		DES_CustomCurrencyLocations.AddForm(DLC2TelMithrynLocation)
 	ENDIF
 
-	CurrencyFunctions.RegisterModuleQuest("MorrowindUsesDrams.esp", GetOwningQuest().GetFormID())
+	CurrencyFunctions.RegisterModuleQuest("MorrowindUsesDrams.esp", GetFormID())
 
 	IF Game.IsPluginInstalled("WindhelmUsesUlfrics.esp")
 		DES_UlfricChanceNone.SetValue(0)
 	ENDIF
+
+endFunction
+
+;--------------------------------------------------
+
+Function OnPlayerLoadGame_Alias()
+
+	IF Game.IsPluginInstalled("WindhelmUsesUlfrics.esp")
+		DES_UlfricChanceNone.SetValue(0)
+	ENDIF
+
+endFunction
+
+;--------------------------------------------------
+
+Formlist Property DES_DramLocations auto
+Perk Property DES_MorrowindPriceAdjustmentPerk auto
+
+Function OnLocationChange_Alias()
+
+	While CurrencyFunctions.CurrencyIsSwapping
+		Utility.Wait(0.1)
+	endWhile
+	UpdateCosts()
+	CurrencyFunctions.SwapCurrency(DES_DramLocations, DES_MorrowindPriceAdjustmentPerk, DES_Dram)
+
+	if IsStageDone(0)
+		if !PlayerRef.IsInLocation(DLC2RavenRockLocation)
+			SetStage(6)
+		endif
+	endif
 
 endFunction
 
@@ -40,8 +76,8 @@ globalvariable property DES_DramWorth auto
 Function UpdateCosts()
 	float DramRoomCost = RoomCost.GetValue()*DES_DramWorth.GetValue()
 	DES_DramRoomCost.SetValue(DramRoomCost)
-	GetOwningQuest().UpdateCurrentInstanceGlobal(DES_DramRoomCost)
-	(GetOwningQuest() as DES_DramQuestScript).Ulfric = (Quest.GetQuest("DES_UlfricWindhelmServices")).GetStage()
+	UpdateCurrentInstanceGlobal(DES_DramRoomCost)
+	Ulfric = (Quest.GetQuest("DES_UlfricWindhelmServices")).GetStage()
 endFunction
 
 ;--------------------------------------------------
@@ -54,22 +90,8 @@ EVENT OnInit()
 ENDEVENT
 
 ;--------------------------------------------------
-
-EVENT OnPlayerGameLoad()
-	IF Game.IsPluginInstalled("WindhelmUsesUlfrics.esp")
-		DES_UlfricChanceNone.SetValue(0)
-	ENDIF
-ENDEVENT
-
+;QUEST VARIABLES
 ;--------------------------------------------------
 
-Formlist Property DES_DramLocations auto
-Perk Property DES_MorrowindPriceAdjustmentPerk auto
-
-EVENT OnLocationChange(Location akOldLoc, Location akNewLoc)
-	While CurrencyFunctions.CurrencyIsSwapping
-		Utility.Wait(0.1)
-	endWhile
-	UpdateCosts()
-	CurrencyFunctions.SwapCurrency(DES_DramLocations, DES_MorrowindPriceAdjustmentPerk, DES_Dram)
-ENDEVENT
+Int Property Trespassing Auto Conditional
+Int Property Ulfric Auto Conditional

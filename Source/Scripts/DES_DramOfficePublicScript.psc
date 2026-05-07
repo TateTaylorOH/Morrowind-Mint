@@ -6,7 +6,7 @@ Quest Property DES_DramMorrowindServicesQuest auto
 
 Event OnTriggerEnter(ObjectReference akActionRef)
 	if akactionref == playerref
-		(DES_DramMorrowindServicesQuest as DES_DramQuestScript).Trespassing = 0
+		(DES_DramMorrowindServicesQuest as DES_DramCurrencySwapper).Trespassing = 0
 		DES_DramExchangerRef.EvaluatePackage()
 	endif
 EndEvent
