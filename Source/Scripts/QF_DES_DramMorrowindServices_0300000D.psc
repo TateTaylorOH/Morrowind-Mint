@@ -12,6 +12,17 @@ ReferenceAlias Property Alias_Player Auto
 ReferenceAlias Property Alias_Galos Auto
 ;END ALIAS PROPERTY
 
+;BEGIN FRAGMENT Fragment_1
+Function Fragment_1()
+;BEGIN CODE
+SetObjectiveCompleted(0)
+Alias_Galos.trytoEvaluatePackage()
+Ledger.Disable()
+Ledger.Delete()
+;END CODE
+EndFunction
+;END FRAGMENT
+
 ;BEGIN FRAGMENT Fragment_0
 Function Fragment_0()
 ;BEGIN CODE
@@ -24,20 +35,7 @@ EndFunction
 Function Fragment_4()
 ;BEGIN CODE
 SetObjectiveDisplayed(0,abDisplayed = false)
-Alias_Galos.trytoEvaluatePackage()
-Ledger.Disable()
-Ledger.Delete()
-;END CODE
-EndFunction
-;END FRAGMENT
-
-;BEGIN FRAGMENT Fragment_1
-Function Fragment_1()
-;BEGIN CODE
-SetObjectiveCompleted(0)
-Alias_Galos.trytoEvaluatePackage()
-Ledger.Disable()
-Ledger.Delete()
+SetStage(5)
 ;END CODE
 EndFunction
 ;END FRAGMENT
